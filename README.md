@@ -1,7 +1,12 @@
 KSF-CMS cms made in Symfony2
 =============================
+<<<<<<< HEAD
 Welcome to the KSF-CMS , A CMS Made in Symfony2 Framework
 (open source content management system), allows for faster and
+=======
+Welcome to the KSF-CMS , A CMS Made in Symfony2 which Made Simple,
+an open source content management system, allows for faster and
+>>>>>>> b9353d5b9df7c6296eff0c7fa537101df4a5ef98
 easier management of website content. This CMS is scalable for small
 businesses to large corporations.
 
