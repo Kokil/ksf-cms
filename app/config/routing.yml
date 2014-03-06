@@ -1,0 +1,36 @@
+blog_category:
+    resource: "@BlogCategoryBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+admin_admin:
+    resource: "@AdminAdminBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+blog_blog:
+    resource: "@BlogBlogBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+news_news:
+    resource: "@NewsNewsBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+news_category:
+    resource: "@NewsCategoryBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+login:
+    pattern:   /login/
+    defaults:  { _controller: AdminAdminBundle:Login:login}
+logout:
+    path:     /logout
+login_check:
+    pattern:   /login_check
+
+dashboard:
+    pattern: /admin/dashboard/
+    defaults: {_controller: AdminDashboardBundle:Admin:index }
