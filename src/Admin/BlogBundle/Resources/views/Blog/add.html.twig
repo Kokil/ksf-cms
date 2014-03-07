@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Blog : {{ site_name }}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link href="{{ asset('bundles/adminadmin/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('bundles/adminadmin/css/bootstrap-responsive.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('bundles/adminadmin/css/font-awesome.css') }}" rel="stylesheet">
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet">
+        <link href="{{ asset('bundles/adminadmin/css/style.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('bundles/adminadmin/css/pages/dashboard.css') }}" rel="stylesheet">
+        <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div class="navbar navbar-default navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container"> <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span
+                    class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span> </a><a class="brand" href="{{ path('dashboard') }}">{{ site_name }} : Admin Dashboard</a>
+                    <div class="nav-collapse">
+                        <ul class="nav pull-right">
+                            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
+                                class="icon-cog"></i> Account <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="javascript:;">Settings</a></li>
+                                    <li><a href="javascript:;">Help</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
+                                class="icon-user"></i> {{ app.user.username|capitalize }} <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Profile</a></li>
+                                    <li><a href="{{ path('logout') }}">Logout</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <form class="navbar-search pull-right">
+                            <input type="text" class="search-query" placeholder="Search">
+                        </form>
+                    </div>
+                    <!--/.nav-collapse -->
+                </div>
+                <!-- /container -->
+            </div>
+            <!-- /navbar-inner -->
+        </div>
+        <!-- /navbar -->
+        <div class="subnavbar">
+            <div class="subnavbar-inner">
+                <div class="container">
+                    <ul class="mainnav">
+                        <li><a href="{{ path('dashboard') }}"><i class="icon-dashboard"></i><span>Dashboard</span> </a> </li>
+                        <li class="active"><a href="{{ path('admin_blog_home') }}"><i class="icon-list-alt"></i><span>Blog</span> </a> </li>
+                        <li><a href="#"><i class="icon-facetime-video"></i><span>App Tour</span> </a></li>
+                        <li><a href="#"><i class="icon-bar-chart"></i><span>Charts</span> </a> </li>
+                        <li><a href="#"><i class="icon-code"></i><span>Shortcodes</span> </a> </li>
+                        <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-long-arrow-down"></i><span>Drops</span> <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Icons</a></li>
+                                <li><a href="#">FAQ</a></li>
+                                <li><a href="#">Pricing Plans</a></li>
+                                <li><a href="#">Login</a></li>
+                                <li><a href="#">Signup</a></li>
+                                <li><a href="#">404</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /container -->
+            </div>
+            <!-- /subnavbar-inner -->
+        </div>
+        <!-- /subnavbar -->
+        <div class="main">
+            <div class="main-inner">
+                <div class="container">
+                    <div class="row">
+                      <!--<div class="span12">
+                        <div class="widget">
+                            <div class="widget-header">
+                                <i class="icon-list-alt"></i>
+                                <h3>
+                                    Bar Chart</h3>
+                            </div>
+
+                        </div></div>-->
+                        <div class="span12">
+                            <div class="widget widget-table action-table">
+                                <div class="widget-header"> <i class="icon-th-list"></i>
+                                    <h3>Add Blog</h3>
+                                    <a href="{{ path('admin_blog_home') }}" class="pull-right" style="padding-right:10px; font-weight:bold;font-size:15px;">Back to Home</a>
+                                </div>
+                                <!-- /widget-header -->
+                                <div class="widget-content">
+
+                                {#{ form(form) }#}
+                                <br /><br />
+
+                                <form id="edit-profile" class="form-horizontal" style"padding-left:250px;" method="post" action="">
+                                    <fieldset>
+
+                                        <div class="control-group">
+                                            <label class="control-label" for="firstname">Blog Title</label>
+                                            <div class="controls">
+                                                <input type="text" class="span6" id="firstname" value="John">
+                                            </div> <!-- /controls -->
+                                        </div> <!-- /control-group -->
+
+
+                                        <div class="control-group">
+                                            <label class="control-label" for="lastname">Blog Category</label>
+                                            <div class="controls">
+                                                <select  class="span6" >
+                                                    <option value="1">1</option>
+                                                    <option value="1">1</option>
+                                                    <option value="1">1</option>
+                                                    <option value="1">1</option>
+                                                </select>
+
+                                            </div>
+                                        </div>
+
+
+                                        <div class="control-group">
+                                            <label class="control-label" for="email">Email Address</label>
+                                            <div class="controls">
+                                                <input type="text" class="span4" id="email" value="john.donga@egrappler.com">
+                                            </div> <!-- /controls -->
+                                        </div> <!-- /control-group -->
+
+
+                                        <br /><br />
+
+                                        <div class="control-group">
+                                            <label class="control-label" for="password1">Password</label>
+                                            <div class="controls">
+                                                <input type="password" class="span4" id="password1" value="thisispassword">
+                                            </div> <!-- /controls -->
+                                        </div> <!-- /control-group -->
+
+
+                                        <div class="control-group">
+                                            <label class="control-label" for="password2">Confirm</label>
+                                            <div class="controls">
+                                                <input type="password" class="span4" id="password2" value="thisispassword">
+                                            </div> <!-- /controls -->
+                                        </div> <!-- /control-group -->
+
+
+
+                                        <div class="control-group">
+                                            <label class="control-label">Checkboxes</label>
+
+
+                                            <div class="controls">
+                                            <label class="checkbox inline">
+                                              <input type="checkbox"> Option 01
+                                            </label>
+
+                                            <label class="checkbox inline">
+                                              <input type="checkbox"> Option 02
+                                            </label>
+                                          </div>        <!-- /controls -->
+                                        </div> <!-- /control-group -->
+
+
+
+                                        <div class="control-group">
+                                            <label class="control-label">Radio Buttons</label>
+
+
+                                            <div class="controls">
+                                            <label class="radio inline">
+                                              <input type="radio"  name="radiobtns"> Option 01
+                                            </label>
+
+                                            <label class="radio inline">
+                                              <input type="radio" name="radiobtns"> Option 02
+                                            </label>
+                                          </div>    <!-- /controls -->
+                                        </div> <!-- /control-group -->
+
+
+
+
+                                        <div class="control-group">
+                                            <label class="control-label" for="radiobtns">Combined Textbox</label>
+
+                                            <div class="controls">
+                                               <div class="input-prepend input-append">
+                                                  <span class="add-on">$</span>
+                                                  <input class="span2" id="appendedPrependedInput" type="text">
+                                                  <span class="add-on">.00</span>
+                                                </div>
+                                              </div>    <!-- /controls -->
+                                        </div> <!-- /control-group -->
+
+
+
+
+
+                                        <div class="control-group">
+                                            <label class="control-label" for="radiobtns">Textbox with Buttons </label>
+
+                                            <div class="controls">
+                                               <div class="input-append">
+                                                  <input class="span2 m-wrap" id="appendedInputButton" type="text">
+                                                  <button class="btn" type="button">Go!</button>
+                                                </div>
+                                              </div>    <!-- /controls -->
+                                        </div> <!-- /control-group -->
+
+
+
+
+
+                                        <div class="control-group">
+                                            <label class="control-label" for="radiobtns">Dropdown in a button group</label>
+
+                                            <div class="controls">
+                                              <div class="btn-group">
+                                              <a class="btn btn-primary" href="#"><i class="icon-user icon-white"></i> User</a>
+                                              <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+                                              <ul class="dropdown-menu">
+                                                <li><a href="#"><i class="icon-pencil"></i> Edit</a></li>
+                                                <li><a href="#"><i class="icon-trash"></i> Delete</a></li>
+                                                <li><a href="#"><i class="icon-ban-circle"></i> Ban</a></li>
+                                                <li class="divider"></li>
+                                                <li><a href="#"><i class="i"></i> Make admin</a></li>
+                                              </ul>
+                                            </div>
+                                              </div>    <!-- /controls -->
+                                        </div> <!-- /control-group -->
+
+
+
+
+
+                                        <div class="control-group">
+                                            <label class="control-label" for="radiobtns">Button sizes</label>
+
+                                            <div class="controls">
+                                              <a class="btn btn-large" href="#"><i class="icon-star"></i> Star</a>
+                                                <a class="btn btn-small" href="#"><i class="icon-star"></i> Star</a>
+                                                <a class="btn btn-mini" href="#"><i class="icon-star"></i> Star</a>
+                                              </div>    <!-- /controls -->
+                                        </div> <!-- /control-group -->
+
+
+
+                                         <br />
+
+
+                                        <div class="form-actions">
+                                            <button type="submit" class="btn btn-primary">Save</button>
+                                            <button class="btn">Cancel</button>
+                                        </div> <!-- /form-actions -->
+                                    </fieldset>
+                                </form>
+
+                                </div>
+                                <!-- /widget-content -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /container -->
+            </div>
+            <!-- /main-inner -->
+        </div>
+        <!-- /main -->
+        <div class="footer">
+            <div class="footer-inner">
+                <div class="container">
+                    <div class="row">
+                        <div class="span12" style="text-align:center;"> &copy; {{ "now"|date("Y") }} <a href="http://www.kokil.com.np/">Kokil Thapa</a> || Powered by : <a href="http://symfony.com/">Symfony</a> </div>
+                        <!-- /span12 -->
+                    </div>
+                    <!-- /row -->
+                </div>
+                <!-- /container -->
+            </div>
+            <!-- /footer-inner -->
+        </div>
+        <!-- /footer -->
+        <!-- Le javascript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="{{ asset('bundles/adminadmin/js/jquery-1.7.2.min.js') }}"></script>
+        <script src="{{ asset('bundles/adminadmin/js/excanvas.min.js') }}"></script>
+        <script src="{{ asset('bundles/adminadmin/js/bootstrap.js') }}"></script>
+        <script src="{{ asset('bundles/adminadmin/js/base.js') }}"></script>
+
+    </body>
+</html>
