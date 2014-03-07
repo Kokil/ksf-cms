@@ -53,7 +53,7 @@
           <div class="container">
             <ul class="mainnav">
               <li class="active"><a href="{{ path('dashboard') }}"><i class="icon-dashboard"></i><span>Dashboard</span> </a> </li>
-              <li><a href="#"><i class="icon-list-alt"></i><span>Reports</span> </a> </li>
+              <li><a href="{{ path('admin_blog_home') }}"><i class="icon-list-alt"></i><span>Blog</span> </a> </li>
               <li><a href="#"><i class="icon-facetime-video"></i><span>App Tour</span> </a></li>
               <li><a href="#"><i class="icon-bar-chart"></i><span>Charts</span> </a> </li>
               <li><a href="#"><i class="icon-code"></i><span>Shortcodes</span> </a> </li>
@@ -87,7 +87,8 @@
                   <div class="widget-content">
                     <div class="widget big-stats-container">
                       <div class="widget-content">
-                        <h6 class="bigstats">A fully responsive premium quality admin template built on Twitter Bootstrap by <a href="http://www.egrappler.com" target="_blank">EGrappler.com</a>.  These are some dummy lines to fill the area.</h6>
+                        <h6 class="bigstats">Welcome to the Live Status
+This demo contains live data from a real website which sells guitars and musical instruments online.</h6>
                         <div id="big_stats" class="cf">
                           <div class="stat"> <i class="icon-anchor"></i> <span class="value">851</span> </div>
                           <!-- .stat -->
@@ -119,11 +120,29 @@
                   </div>
                   <!-- /widget-header -->
                   <div class="widget-content">
-                    <div class="shortcuts"> <a href="javascript:;" class="shortcut"><i class="shortcut-icon icon-list-alt"></i><span
-                      class="shortcut-label">Apps</span> </a><a href="javascript:;" class="shortcut"><i
-                      class="shortcut-icon icon-bookmark"></i><span class="shortcut-label">Bookmarks</span> </a><a href="javascript:;" class="shortcut"><i class="shortcut-icon icon-signal"></i> <span class="shortcut-label">Reports</span> </a><a href="javascript:;" class="shortcut"> <i class="shortcut-icon icon-comment"></i><span class="shortcut-label">Comments</span> </a><a href="javascript:;" class="shortcut"><i class="shortcut-icon icon-user"></i><span
-                      class="shortcut-label">Users</span> </a><a href="javascript:;" class="shortcut"><i
-                      class="shortcut-icon icon-file"></i><span class="shortcut-label">Notes</span> </a><a href="javascript:;" class="shortcut"><i class="shortcut-icon icon-picture"></i> <span class="shortcut-label">Photos</span> </a><a href="javascript:;" class="shortcut"> <i class="shortcut-icon icon-tag"></i><span class="shortcut-label">Tags</span> </a> </div>
+                    <div class="shortcuts">
+
+                      <a href="{{ path('admin_blog_home') }}" class="shortcut"><i class="shortcut-icon icon-list-alt"></i><span
+                      class="shortcut-label">Blog</span> </a>
+
+                      <a href="javascript:;" class="shortcut"><i
+                      class="shortcut-icon icon-bookmark"></i><span class="shortcut-label">Bookmarks</span> </a>
+
+                      <a href="javascript:;" class="shortcut"><i class="shortcut-icon icon-signal"></i> <span class="shortcut-label">Reports</span> </a>
+
+                      <a href="javascript:;" class="shortcut"> <i class="shortcut-icon icon-comment"></i><span class="shortcut-label">Comments</span> </a>
+
+                      <a href="javascript:;" class="shortcut"><i class="shortcut-icon icon-user"></i><span
+                      class="shortcut-label">Users</span> </a>
+
+                      <a href="javascript:;" class="shortcut"><i
+                      class="shortcut-icon icon-file"></i><span class="shortcut-label">Notes</span> </a>
+
+                      <a href="javascript:;" class="shortcut"><i class="shortcut-icon icon-picture"></i> <span class="shortcut-label">Photos</span> </a>
+
+                      <a href="javascript:;" class="shortcut"> <i class="shortcut-icon icon-tag"></i><span class="shortcut-label">Tags</span> </a>
+
+                    </div>
                       <!-- /shortcuts -->
                     </div>
                     <!-- /widget-content -->

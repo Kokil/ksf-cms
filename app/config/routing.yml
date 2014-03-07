@@ -1,31 +1,44 @@
+admin_blog_home:
+    resource: "@AdminBlogBundle/Controller/"
+    type:     annotation
+    prefix:   /admin/blog/
+
+admin_setting:
+    resource: "@AdminSettingBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+admin_pages:
+    resource: "@AdminPagesBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+admin_blog_category:
+    resource: "@AdminBlogCategoryBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+admin_news:
+    resource: "@AdminNewsBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+admin_news_category:
+    resource: "@AdminNewsCategoryBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 _index:
     pattern:  /
     defaults: { _controller: AdminBlogBundle:Blog:showAll }
-
-blog_category:
-    resource: "@BlogCategoryBundle/Controller/"
-    type:     annotation
-    prefix:   /
 
 admin_admin:
     resource: "@AdminAdminBundle/Controller/"
     type:     annotation
     prefix:   /
 
-blog_blog:
-    resource: "@BlogBlogBundle/Controller/"
-    type:     annotation
-    prefix:   /
 
-news_news:
-    resource: "@NewsNewsBundle/Controller/"
-    type:     annotation
-    prefix:   /
 
-news_category:
-    resource: "@NewsCategoryBundle/Controller/"
-    type:     annotation
-    prefix:   /
 
 login:
     pattern:   /login/
