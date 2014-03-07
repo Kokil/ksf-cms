@@ -56,8 +56,9 @@
                   {% block body %}
 					{% if error %}
 					<div class="alert alert-danger">
-						<button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
-						{{ error.message|trans }}
+						{{
+						  	error.message | replace({"Bad credentials": "Invalid username/password."})
+						}}
 					</div>
 
 					{% endif %}
@@ -92,8 +93,8 @@
          <a href="#">Reset Password</a>
       </div>
       <!-- /login-extra -->
-      <script src="js/jquery-1.7.2.min.js"></script>
-      <script src="js/bootstrap.js"></script>
-      <script src="js/signin.js"></script>
+      <script src="{{ asset('bundles/adminadmin/js/jquery-1.7.2.min.js') }}"></script>
+      <script src="{{ asset('bundles/adminadmin/js/bootstrap.js') }}"></script>
+      <script src="{{ asset('bundles/adminadmin/js/bootstrap.js') }}"></script>
    </body>
 </html>
