@@ -92,7 +92,7 @@
                             <div class="widget-content">
 
                                 {{ form_errors(form) }}
-                               <form id="edit-profile" class="form-horizontal" method="post" action="{{ path('admin_blog_add') }}">
+                               <form id="edit-profile" class="form-horizontal" method="post" action="{{ path('admin_blog_add') }}" enctype='multipart/form-data'>
                                     <fieldset>
 
                                         <div class="control-group">
@@ -115,6 +115,13 @@
                                             <label class="control-label" for="lastname">Author</label>
                                             <div class="controls">
                                                 <input type="text" class="span6" id="author" name="author" required>
+                                            </div> <!-- /controls -->
+                                        </div> <!-- /control-group -->
+
+                                        <div class="control-group">
+                                            <label class="control-label" for="lastname">Image</label>
+                                            <div class="controls">
+                                                <input type="file" class="span6" id="image" name="image" required>
                                             </div> <!-- /controls -->
                                         </div> <!-- /control-group -->
 
