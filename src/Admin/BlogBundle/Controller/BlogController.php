@@ -31,7 +31,20 @@ class BlogController extends Controller
         $entity = new blog();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
-        if ($form->isValid()) {
+        $date=date('Y-m-d H:i:s');//die();
+
+        if ($request->isMethod('POST')) {
+            $title = $this->get('request')->request->get('title');
+            $entity->setTitle($request->request->get('title'));
+            $entity->setCategory($request->request->get('category'));
+            $entity->setAuthor($request->request->get('author'));
+            $entity->setSlug(preg_replace('/[^A-Za-z0-9-]+/', '-', $title));
+            $entity->setShort($request->request->get('short'));
+            $entity->setImage('logo.png');
+            $entity->setDetail($request->request->get('detail'));
+            $entity->setStatus($request->request->get('status'));
+            $entity->setAdded(date("Y-m-d H:i:s"));
+            $entity->setUpdated('0000-00-00 00:00:00');
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();

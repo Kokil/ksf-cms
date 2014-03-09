@@ -1,0 +1,22 @@
+//src/Admin/BlogBundle/Resources/views/Form/bootstrap-form-horizontal.html.twig
+{% block form_start %}
+{% spaceless %}
+    {% set method = method|upper %}
+    {% if method in ["GET", "POST"] %}
+        {% set form_method = method %}
+    {% else %}
+        {% set form_method = "POST" %}
+    {% endif %}
+
+{% endspaceless %}
+{% endblock form_start %}
+
+{% block form_row %}
+{% spaceless %}
+    <div class="control-group">
+        {#{ form_label(form) }}
+        {{ form_errors(form) }}
+        {{ form_widget(form) }#}
+    </div>
+{% endspaceless %}
+{% endblock form_row %}

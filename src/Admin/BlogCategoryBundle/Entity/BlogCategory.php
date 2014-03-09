@@ -60,7 +60,7 @@ class BlogCategory
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -83,7 +83,7 @@ class BlogCategory
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -106,7 +106,7 @@ class BlogCategory
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -129,7 +129,7 @@ class BlogCategory
     /**
      * Get status
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getStatus()
     {
@@ -152,7 +152,7 @@ class BlogCategory
     /**
      * Get added
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getAdded()
     {
@@ -175,7 +175,7 @@ class BlogCategory
     /**
      * Get updated
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdated()
     {
