@@ -4,3 +4,4 @@ app/cache
 app/logs
 /Component
 /logs
+/uploads/
