@@ -76,16 +76,16 @@ class Blog
     private $status;
 
     /**
-     * @var \DateTime
+     * @var string
      *
-     * @ORM\Column(name="added", type="datetime")
+     * @ORM\Column(name="added", type="string", length=20)
      */
     private $added;
 
     /**
-     * @var \DateTime
+     * @var string
      *
-     * @ORM\Column(name="updated", type="datetime")
+     * @ORM\Column(name="updated", type="string", length=20)
      */
     private $updated;
 
@@ -305,5 +305,28 @@ class Blog
     public function getUpdated()
     {
         return $this->updated;
+    }
+
+    /**
+     * Set author
+     *
+     * @param string $author
+     * @return Blog
+     */
+    public function setAuthor($author)
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    /**
+     * Get author
+     *
+     * @return string
+     */
+    public function getAuthor()
+    {
+        return $this->author;
     }
 }
