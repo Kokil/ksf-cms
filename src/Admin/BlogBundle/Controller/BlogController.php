@@ -32,7 +32,7 @@ class BlogController extends Controller {
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
         $date = date('Y-m-d H:i:s');
-        $uploadDirectory = '%kernel.root_dir%/../uploads';
+        $uploadDirectory = '%kernel.root_dir%/../uploads/';
 
         if ($request->isMethod('POST')) {
 
