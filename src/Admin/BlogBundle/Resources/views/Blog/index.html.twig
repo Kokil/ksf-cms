@@ -101,92 +101,31 @@
                                                 <th>#</th>
                                                 <th>Title</th>
                                                 <th>Category</th>
-                                                <th>Category</th>
                                                 <th>Author</th>
+                                                <th>Added</th>
+                                                <th>status</th>
                                                 <th>&nbsp;</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                        {% for entity in entities %}
                                             <tr>
-                                                <td>1</td>
-                                                <td> http://www.egrappler.com/ </td>
-                                                <td></td>
-                                                <td>1</td>
-                                                <td> http://www.egrappler.com/ </td>
-                                                <td class="td-actions"><a href="javascript:;" class="btn btn-small btn-success"><i class="btn-icon-only icon-ok"> </i></a><a href="javascript:;" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
+                                                <td> {{ loop.index0+1 }}</td>
+                                                <td>{{ entity.title }}</td>
+                                                <td>{{ entity.category }}</td>
+                                                <td>{{ entity.author }}</td>
+                                                <td>{{ entity.added}}</td>
+                                                <td> {% if entity.status == '1' %}
+                                                   <a href="#{{ entity.id }}">Unpublish</a>
+                                                    {% else %}<a href="#{{ entity.id }}">Publish</a>
+                                                    {% endif %}
+                                                </td>
+                                                <td class="td-actions"><a href="#{{ entity.id }}">Edit</a>|<a href="#{{ entity.id }}">Delete</a></td>
                                             </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td> http://www.egrappler.com/ </td>
-                                                <td></td>
-                                                <td>1</td>
-                                                <td> http://www.egrappler.com/ </td>
-                                                <td class="td-actions"><a href="javascript:;" class="btn btn-small btn-success"><i class="btn-icon-only icon-ok"> </i></a><a href="javascript:;" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td> http://www.egrappler.com/ </td>
-                                                <td></td>
-                                                <td>1</td>
-                                                <td> http://www.egrappler.com/ </td>
-                                                <td class="td-actions"><a href="javascript:;" class="btn btn-small btn-success"><i class="btn-icon-only icon-ok"> </i></a><a href="javascript:;" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td> http://www.egrappler.com/ </td>
-                                                <td></td>
-                                                <td>1</td>
-                                                <td> http://www.egrappler.com/ </td>
-                                                <td class="td-actions"><a href="javascript:;" class="btn btn-small btn-success"><i class="btn-icon-only icon-ok"> </i></a><a href="javascript:;" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td> http://www.egrappler.com/ </td>
-                                                <td></td>
-                                                <td>1</td>
-                                                <td> http://www.egrappler.com/ </td>
-                                                <td class="td-actions"><a href="javascript:;" class="btn btn-small btn-success"><i class="btn-icon-only icon-ok"> </i></a><a href="javascript:;" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td> http://www.egrappler.com/ </td>
-                                                <td></td>
-                                                <td>1</td>
-                                                <td> http://www.egrappler.com/ </td>
-                                                <td class="td-actions"><a href="javascript:;" class="btn btn-small btn-success"><i class="btn-icon-only icon-ok"> </i></a><a href="javascript:;" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
-                                            </tr>
-                                            <tr>
-                                                 <td>1</td>
-                                                <td> http://www.egrappler.com/ </td>
-                                                <td></td>
-                                                <td>1</td>
-                                                <td> http://www.egrappler.com/ </td>
-                                                <td class="td-actions"><a href="javascript:;" class="btn btn-small btn-success"><i class="btn-icon-only icon-ok"> </i></a><a href="javascript:;" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
-                                            </tr>
-                                            <tr>
-                                                 <td>1</td>
-                                                <td> http://www.egrappler.com/ </td>
-                                                <td></td>
-                                                <td>1</td>
-                                                <td> http://www.egrappler.com/ </td>
-                                                <td class="td-actions"><a href="javascript:;" class="btn btn-small btn-success"><i class="btn-icon-only icon-ok"> </i></a><a href="javascript:;" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
-                                            </tr>
-                                            <tr>
-                                                 <td>1</td>
-                                                <td> http://www.egrappler.com/ </td>
-                                                <td></td>
-                                                <td>1</td>
-                                                <td> http://www.egrappler.com/ </td>
-                                                <td class="td-actions"><a href="javascript:;" class="btn btn-small btn-success"><i class="btn-icon-only icon-ok"> </i></a><a href="javascript:;" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
-                                            </tr>
-                                            <tr>
-                                                <td> Fresh Web Development Resources </td>
-                                                <td> http://www.egrappler.com/ </td>
-                                                <td> Fresh Web Development Resources </td>
-                                                <td> http://www.egrappler.com/ </td>
-                                                <td> Fresh Web Development Resources </td>
-                                                <td class="td-actions"><a href="javascript:;" class="btn btn-small btn-success"><i class="btn-icon-only icon-ok"> </i></a><a href="javascript:;" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
-                                            </tr>
+
+                                        {% endfor %}
+
+
                                         </tbody>
                                     </table>
                                 </div>

@@ -19,7 +19,10 @@ class BlogController extends Controller
      */
     public function indexAction()
     {
-        return array('name' => 'sdfasdf');
+        $em = $this->getDoctrine()->getManager();
+        $entities = $em->getRepository('AdminBlogBundle:Blog')->findAll();
+        return $this->render('AdminBlogBundle:Blog:index.html.twig',  array('entities' => $entities, ));
+
     }
 
     /**
@@ -31,7 +34,7 @@ class BlogController extends Controller
         $entity = new blog();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
-        $date=date('Y-m-d H:i:s');//die();
+        $date=date('Y-m-d H:i:s');
 
         if ($request->isMethod('POST')) {
             $title = $this->get('request')->request->get('title');
@@ -43,7 +46,7 @@ class BlogController extends Controller
             $entity->setImage('logo.png');
             $entity->setDetail($request->request->get('detail'));
             $entity->setStatus($request->request->get('status'));
-            $entity->setAdded(date("Y-m-d H:i:s"));
+            $entity->setAdded($date);
             $entity->setUpdated('0000-00-00 00:00:00');
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
