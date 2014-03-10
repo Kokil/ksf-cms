@@ -7,6 +7,7 @@ use Symfony\Component\Form\FormView;
 use Symfony\Component\Form\FileField;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\Response;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -88,6 +89,9 @@ class BlogController extends Controller {
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
+            $this->get('session')->setFlash('success', 'Blog Added.');
+
+            return $this->redirect($this->generateUrl('admin_blog_home'));
 
         }
 
