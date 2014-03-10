@@ -20,7 +20,9 @@ class BlogController extends Controller {
      */
     public function indexAction() {
         $em = $this->getDoctrine()->getManager();
-        $entities = $em->getRepository('AdminBlogBundle:Blog')->findAll();
+        $entities = $em->getRepository('AdminBlogBundle:Blog')->findByBlogAndCategory();
+        echo '<pre>';
+        print_r($entities);die();
         return $this->render('AdminBlogBundle:Blog:index.html.twig', array('entities' => $entities,));
     }
     /**
@@ -35,9 +37,6 @@ class BlogController extends Controller {
         $uploadDirectory = '%kernel.root_dir%/../uploads/blog/';
 
         if ($request->isMethod('POST')) {
-
-
-
             $MAXIMUM_FILESIZE = 30 * 1024 * 1024;
             $rEFileTypes ="/^\.(jpg|jpeg|png|gif){1}$/i";
             $dir_base = $uploadDirectory ;
@@ -66,11 +65,12 @@ class BlogController extends Controller {
                     die("Warning : The size of the image shouldn't be more than 1MB!");
                   }
             }
-
+            $postData = $request->request->get('admin_blogbundle_blog');
+            $category_name = $postData['category'];
             $blogImage = isset($isMove) ? $new_photo_name.$ext : NULL;
             $title = $this->get('request')->request->get('title');
             $entity->setTitle($request->request->get('title'));
-            $entity->setCategory($request->request->get('category'));
+            $entity->setCategory($category_name);
             $entity->setAuthor($request->request->get('author'));
             $entity->setSlug(preg_replace('/[^A-Za-z0-9-]+/', '-', $title));
             $entity->setShort($request->request->get('short'));

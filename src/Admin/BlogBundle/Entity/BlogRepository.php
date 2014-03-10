@@ -12,4 +12,24 @@ use Doctrine\ORM\EntityRepository;
  */
 class BlogRepository extends EntityRepository
 {
+	public function findByBlogAndCategory()
+    {
+        /*return $this->getEntityManager()->createQuery('SELECT b,c FROM AdminBlogBundle:Blog b
+                  JOIN AdminBlogCategoryBundle:BlogCategory c
+                  WHERE b.category=c.id')
+        ->getResult();
+        */
+       $em = $this->getEntityManager();
+
+		$query = $em->createQuery('
+		    SELECT c,b
+		    FROM AdminBlogBundle:Blog b
+		    JOIN  AdminBlogCategoryBundle:BlogCategory c
+		    WHERE b.category = c.id
+		');
+
+		//$query->setParameter('id', '1');
+
+		return $query->getResult();
+    }
 }

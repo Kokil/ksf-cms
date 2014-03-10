@@ -29,9 +29,9 @@ class Blog
     private $title;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="category", type="string", length=255)
+     * @ORM\Column(name="category", type="integer")
      */
     private $category;
 

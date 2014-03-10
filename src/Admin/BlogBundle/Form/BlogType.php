@@ -2,6 +2,7 @@
 
 namespace Admin\BlogBundle\Form;
 
+use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\Form;
 use Symfony\Component\Form\TextField;
 use Symfony\Component\Form\AbstractType;
@@ -18,18 +19,19 @@ class BlogType extends AbstractType
     {
 
 
-        $builder
-            ->add('title')
-            ->add('category')
-            ->add('author')
-            ->add('slug')
-            ->add('short')
-            ->add('image')
-            ->add('detail')
-            ->add('status')
-            ->add('added')
-            ->add('updated')
-        ;
+
+            $builder->add('title');
+            //$builder->add('category');
+            $builder->add('category', 'entity', array(
+    'class' => 'AdminBlogCategoryBundle:BlogCategory'));
+            $builder->add('author');
+            $builder->add('slug');
+            $builder->add('short');
+            $builder->add('image');
+            $builder->add('detail');
+            $builder->add('status');
+            $builder->add('added');
+            $builder->add('updated');
     }
 
     /**

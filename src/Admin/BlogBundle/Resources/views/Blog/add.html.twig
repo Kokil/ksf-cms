@@ -79,6 +79,7 @@
         </div>
         <!-- /subnavbar -->
     <div class="main">
+        {{ dump(entity)}}
         <div class="main-inner">
             <div class="container">
                 <div class="row">
@@ -90,6 +91,7 @@
                             </div><!-- /widget-header -->
 
                             <div class="widget-content">
+
 
                                 {{ form_errors(form) }}
                                <form id="edit-profile" class="form-horizontal" method="post" action="{{ path('admin_blog_add') }}" enctype='multipart/form-data'>
@@ -103,10 +105,11 @@
                                         </div> <!-- /control-group -->
 
 
+
                                         <div class="control-group">
-                                            <label class="control-label" for="firstname">Category</label>
+
                                             <div class="controls">
-                                                <input type="text" class="span6" id="category" name="category" required>
+                                                {{ form_row(form.category, { 'attr':{'class':'span6'} }) }}
                                             </div> <!-- /controls -->
                                         </div> <!-- /control-group -->
 
