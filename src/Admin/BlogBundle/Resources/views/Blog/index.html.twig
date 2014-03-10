@@ -101,6 +101,7 @@
                                                 <th>#</th>
                                                 <th>Title</th>
                                                 <th>Category</th>
+
                                                 <th>Author</th>
                                                 <th>Added</th>
                                                 <th>status</th>
@@ -113,6 +114,7 @@
                                                 <td> {{ loop.index0+1 }}</td>
                                                 <td>{{ entity.title }}</td>
                                                 <td>{{ entity.category }}</td>
+
                                                 <td>{{ entity.author }}</td>
                                                 <td>{{ entity.added}}</td>
                                                 <td> {% if entity.status == '1' %}

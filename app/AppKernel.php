@@ -25,6 +25,7 @@ class AppKernel extends Kernel
             new Admin\BlogBundle\AdminBlogBundle(),
             new Admin\PagesBundle\AdminPagesBundle(),
             new Admin\SettingBundle\AdminSettingBundle(),
+            new Liip\ImagineBundle\LiipImagineBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
