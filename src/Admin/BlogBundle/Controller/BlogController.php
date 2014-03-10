@@ -20,9 +20,7 @@ class BlogController extends Controller {
      */
     public function indexAction() {
         $em = $this->getDoctrine()->getManager();
-        $entities = $em->getRepository('AdminBlogBundle:Blog')->findByBlogAndCategory();
-        echo '<pre>';
-        print_r($entities);die();
+        $entities = $em->getRepository('AdminBlogBundle:Blog')->findAll();
         return $this->render('AdminBlogBundle:Blog:index.html.twig', array('entities' => $entities,));
     }
     /**
