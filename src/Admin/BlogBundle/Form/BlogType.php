@@ -22,8 +22,8 @@ class BlogType extends AbstractType
 
             $builder->add('title');
             //$builder->add('category');
-            $builder->add('category', 'entity', array(
-    'class' => 'AdminBlogCategoryBundle:BlogCategory'));
+            $builder->add('category', 'entity',
+                array('class' => 'AdminBlogBundle:BlogCategory'));
             $builder->add('author');
             $builder->add('slug');
             $builder->add('short');

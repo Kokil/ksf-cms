@@ -35,6 +35,15 @@ class BlogController extends Controller {
         $uploadDirectory = '%kernel.root_dir%/../uploads/blog/';
 
         if ($request->isMethod('POST')) {
+
+          $data = $request->request->all();
+          $category = (int) $data['admin_blogbundle_blog']['category'];
+          //var_dump($category);die();
+
+          //$em = $this->getDoctrine()->getManager();
+          //$em->persist($entity);
+          //$em->flush();
+
             $MAXIMUM_FILESIZE = 30 * 1024 * 1024;
             $rEFileTypes ="/^\.(jpg|jpeg|png|gif){1}$/i";
             $dir_base = $uploadDirectory ;
@@ -63,12 +72,11 @@ class BlogController extends Controller {
                     die("Warning : The size of the image shouldn't be more than 1MB!");
                   }
             }
-            $postData = $request->request->get('admin_blogbundle_blog');
-            $category_name = $postData['category'];
+
             $blogImage = isset($isMove) ? $new_photo_name.$ext : NULL;
             $title = $this->get('request')->request->get('title');
             $entity->setTitle($request->request->get('title'));
-            $entity->setCategory($category_name);
+            $entity->getCategory($category);
             $entity->setAuthor($request->request->get('author'));
             $entity->setSlug(preg_replace('/[^A-Za-z0-9-]+/', '-', $title));
             $entity->setShort($request->request->get('short'));
@@ -80,11 +88,12 @@ class BlogController extends Controller {
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
-            $this->redirect($this->generateUrl('admin_blog_home', array('Success' => 'Blog Added Successfully.')));
+
         }
 
         return $this->render('AdminBlogBundle:Blog:add.html.twig', array('form' => $form->createView()));
     }
+
     private function createCreateForm(blog $entity) {
         $form = $this->createForm(new BlogType(), $entity, array('action' => $this->generateUrl('admin_blog_add'), 'method' => 'POST',));
 

@@ -13,21 +13,6 @@ admin_pages:
     type:     annotation
     prefix:   /
 
-admin_blog_category:
-    resource: "@AdminBlogCategoryBundle/Controller/"
-    type:     annotation
-    prefix:   /
-
-admin_news:
-    resource: "@AdminNewsBundle/Controller/"
-    type:     annotation
-    prefix:   /
-
-admin_news_category:
-    resource: "@AdminNewsCategoryBundle/Controller/"
-    type:     annotation
-    prefix:   /
-
 _index:
     pattern:  /
     defaults: { _controller: AdminBlogBundle:Blog:showAll }
