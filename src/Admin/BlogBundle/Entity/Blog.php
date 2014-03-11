@@ -74,7 +74,7 @@ class Blog {
     private $updated;
 
     /**
-     * @ORM\ManyToOne(targetEntity="BlogCategory", inversedBy="blogs")
+     * @ORM\ManyToOne(targetEntity="BlogCategory", inversedBy="Blog")
      * @ORM\JoinColumn(name="category", referencedColumnName="id")
      */
     protected $category;

@@ -51,7 +51,7 @@ class BlogCategory {
     private $updated;
 
     /**
-     * @ORM\OneToMany(targetEntity="Blog", mappedBy="BlogBategory")
+     * @ORM\OneToMany(targetEntity="Blog", mappedBy="BlogCategory")
      */
     protected $blogs;
 
