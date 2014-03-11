@@ -1,4 +1,5 @@
 <?php
+
 namespace Admin\BlogBundle\Controller;
 
 use Admin\BlogBundle\Entity\Blog;
@@ -6,12 +7,9 @@ use Admin\BlogBundle\Form\BlogType;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\Form\FileField;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Response;
-
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class BlogController extends Controller {
@@ -39,12 +37,6 @@ class BlogController extends Controller {
 
           $data = $request->request->all();
           $category = (int) $data['admin_blogbundle_blog']['category'];
-          //var_dump($category);die();
-
-          //$em = $this->getDoctrine()->getManager();
-          //$em->persist($entity);
-          //$em->flush();
-
             $MAXIMUM_FILESIZE = 30 * 1024 * 1024;
             $rEFileTypes ="/^\.(jpg|jpeg|png|gif){1}$/i";
             $dir_base = $uploadDirectory ;
@@ -89,8 +81,9 @@ class BlogController extends Controller {
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
-            $this->get('session')->setFlash('success', 'Blog Added.');
-
+            //$this->get('session')->setFlash('success', 'Blog Added.');
+            $this->get('session')->getFlashBag()->add('success','Blog added and published successfully.'
+        );
             return $this->redirect($this->generateUrl('admin_blog_home'));
 
         }
