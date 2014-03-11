@@ -106,26 +106,33 @@ class BlogController extends Controller {
     /**
      *
      * @Route("editBlog/{id}", name="blog_admin_edit")
-     * @Method({"GET", "POST"})
+     * @Method("GET")
      */
-    public function editBlogAction(Request $request, $id)
-    {
+    public function editBlogAction(Request $request, $id) {
         $em = $this->getDoctrine()->getManager();
-
         $entity = $em->getRepository('AdminBlogBundle:Blog')->find($id);
-
 
         if (!$entity) {
             return $this->render('AdminBlogBundle:Blog:Error.html.twig', array('error' => 'Blog Not Found! something went worng.',));
         }
         $editForm = $this->createEditForm($entity);
+        return $this->render('AdminBlogBundle:Blog:blogEdit.html.twig', array('entity' => $entity, 'edit_form' => $editForm->createView(),));
+    }
+    /**
+     *
+     * @Route("/updateBlog/", name="admin_blog_update")
+     * @Method({"POST","GET"})
+     */
 
-        if ($request->isMethod('POST') && $this->get('request')->request->get('submit')=="update_blog" ) {
+    public function updateAction(Request $request) {
+            /*
+            $em = $this->getDoctrine()->getManager();
+            $entity = $em->getRepository('AdminBlogBundle:Blog')->findOneByid($request->request->get('id'));
+            $entity = new blog();
 
             $data = $request->request->all();
             $category = (int)$data['admin_blogbundle_blog']['category'];
             $updated = date('Y-m-d H:i:s');
-            $entity = new blog();
 
             $entity->setTitle($request->request->get('title'));
             $entity->getCategory($category);
@@ -135,19 +142,36 @@ class BlogController extends Controller {
             $entity->setDetail($request->request->get('detail'));
             $entity->setStatus($request->request->get('status'));
             $entity->setUpdated($updated);
-
             //$em->persist($entity);
-            $em->flush();
+            $hello = $em->flush();
+            var_dump($hello);
+            die();
             $this->get('session')->getFlashBag()->add('success', 'Blog updated successfully.');
 
             return $this->redirect($this->generateUrl('admin_blog_home'));
-        }
+             */
+                $id=(int)$request->request->get('id');
+                $em = $this->getDoctrine()->getManager();
+                $entity = $em->getRepository('AdminBlogBundle:Blog')->findOneByid($id);
+
+                $status = $entity->getStatus();
+            $newStatus = ($status ? 0 : 1);
+            $updated = date('Y-m-d H:i:s');
+            $new = $entity->setStatus($newStatus);
+            $updateEntity = new blog();
+
+            $updateEntity->setStatus($newStatus);
+            $updateEntity->setUpdated($updated);
+            $em->flush();
 
 
-      return $this->render('AdminBlogBundle:Blog:blogEdit.html.twig', array(
-              'entity'      => $entity,
-              'edit_form'   => $editForm->createView(),
-        ));
+                $em->flush();
+                die('success');
+
+                $this->get('session')->getFlashBag()->add('success', 'Blog status updated successfully.');
+                return $this->redirect($this->generateUrl('admin_blog_home'));
+
+
     }
     /**
      *
@@ -167,15 +191,11 @@ class BlogController extends Controller {
         return $form;
     }
 
-    private function createEditForm(blog $entity)
-    {
-      $form = $this->createForm(new BlogType(), $entity, array(
-        'action' => $this->generateUrl('blog_admin_edit', array('id' => $entity->getId())),
-        'method' => 'PUT',
-        ));
+    private function createEditForm(blog $entity) {
+        $form = $this->createForm(new BlogType(), $entity, array('action' => $this->generateUrl('blog_admin_edit', array('id' => $entity->getId())), 'method' => 'PUT',));
 
-      $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', array('label' => 'Update'));
 
-      return $form;
+        return $form;
     }
 }
