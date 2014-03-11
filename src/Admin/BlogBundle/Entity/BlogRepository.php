@@ -12,4 +12,13 @@ use Doctrine\ORM\EntityRepository;
  */
 class BlogRepository extends EntityRepository
 {
+	public function findOneByid($id)
+	{
+		return $this->createQueryBuilder('b')
+	        ->andWhere('b.id = :id')
+	        ->setParameter('id', $id)
+	        ->getQuery()
+	        ->getOneOrNullResult()
+	    ;
+	}
 }

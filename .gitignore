@@ -1,11 +1,11 @@
-vendor
-bin
-app/cache
-app/logs/*
-/Component
-logs/*
-uploads/*
-cache/*
+### Symfony2 ###
+# Bootstrap
+app/bootstrap*
+
+# Symfony directories
+vendor/*
+*/logs/*
+*/cache/*
 web/uploads/*
 *~
 *.swp

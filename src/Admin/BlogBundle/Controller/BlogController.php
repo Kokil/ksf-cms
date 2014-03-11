@@ -8,6 +8,7 @@ use Symfony\Component\Form\FormView;
 use Symfony\Component\Form\FileField;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -90,6 +91,61 @@ class BlogController extends Controller {
 
         return $this->render('AdminBlogBundle:Blog:add.html.twig', array('form' => $form->createView()));
     }
+
+    /**
+     *
+     * @Route("statusUpdate/{id}", name="blog_status_update")
+     * @Method("GET")
+     */
+    public function StatusUpdateAction(Request $request, $id)
+    {
+
+      $em = $this->getDoctrine()->getManager();
+      $entity=$em->getRepository('AdminBlogBundle:Blog')->findOneByid($id);
+      if (!$entity) {
+          return $this->render('AdminBlogBundle:Blog:Error.html.twig', array('error' => 'Blog Not Found! something went worng.',));
+      }
+      else
+      {
+        $status=$entity->getStatus();
+        $newStatus = ($status ? 0 : 1);
+        $updated = date('Y-m-d H:i:s');
+        $new=$entity->setStatus($newStatus);
+        $updateEntity = new blog();
+
+        $updateEntity->setStatus($newStatus);
+        $updateEntity->setUpdated($updated);
+        //$em = $this->getDoctrine()->getManager();
+        //$em->persist($updateEntity);
+        $em->flush();
+
+        $this->get('session')->getFlashBag()->add('success','Blog status updated successfully.');
+        return $this->redirect($this->generateUrl('admin_blog_home'));
+
+      }
+
+    }
+
+    /**
+     *
+     * @Route("editBlog/{id}", name="blog_admin_edit")
+     * @Method("GET")
+     */
+    public function editBlogAction(Request $request, $id)
+    {
+        echo 'Edit blog of id: '.$id; die();
+    }
+
+    /**
+     *
+     * @Route("editDelete/{id}", name="blog_admin_delete")
+     * @Method("GET")
+     */
+    public function deleteBlogAction(Request $request, $id)
+    {
+        echo 'delete blog of id: '.$id; die();
+    }
+
 
     private function createCreateForm(blog $entity) {
         $form = $this->createForm(new BlogType(), $entity, array('action' => $this->generateUrl('admin_blog_add'), 'method' => 'POST',));
