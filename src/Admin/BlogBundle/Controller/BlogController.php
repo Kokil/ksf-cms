@@ -8,6 +8,7 @@ use Symfony\Component\Form\FormView;
 use Symfony\Component\Form\FileField;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -90,6 +91,37 @@ class BlogController extends Controller {
 
         return $this->render('AdminBlogBundle:Blog:add.html.twig', array('form' => $form->createView()));
     }
+
+    /**
+     *
+     * @Route("statusUpdate/{id}", name="blog_status_update")
+     * @Method("GET")
+     */
+    public function StatusUpdateAction(Request $request, $id)
+    {
+        echo 'status update of id: '.$id; die();
+    }
+
+    /**
+     *
+     * @Route("editBlog/{id}", name="blog_admin_edit")
+     * @Method("GET")
+     */
+    public function editBlogAction(Request $request, $id)
+    {
+        echo 'Edit blog of id: '.$id; die();
+    }
+
+    /**
+     *
+     * @Route("editDelete/{id}", name="blog_admin_delete")
+     * @Method("GET")
+     */
+    public function deleteBlogAction(Request $request, $id)
+    {
+        echo 'delete blog of id: '.$id; die();
+    }
+
 
     private function createCreateForm(blog $entity) {
         $form = $this->createForm(new BlogType(), $entity, array('action' => $this->generateUrl('admin_blog_add'), 'method' => 'POST',));
