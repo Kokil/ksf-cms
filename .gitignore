@@ -6,3 +6,4 @@ app/logs/*
 logs/*
 uploads/*
 cache/*
+web/uploads/*
