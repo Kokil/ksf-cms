@@ -99,7 +99,31 @@ class BlogController extends Controller {
      */
     public function StatusUpdateAction(Request $request, $id)
     {
-        echo 'status update of id: '.$id; die();
+
+      $em = $this->getDoctrine()->getManager();
+      $entity=$em->getRepository('AdminBlogBundle:Blog')->findOneByid($id);
+      if (!$entity) {
+          return $this->render('AdminBlogBundle:Blog:Error.html.twig', array('error' => 'Blog Not Found! something went worng.',));
+      }
+      else
+      {
+        $status=$entity->getStatus();
+        $newStatus = ($status ? 0 : 1);
+        $updated = date('Y-m-d H:i:s');
+        $new=$entity->setStatus($newStatus);
+        $updateEntity = new blog();
+
+        $updateEntity->setStatus($newStatus);
+        $updateEntity->setUpdated($updated);
+        //$em = $this->getDoctrine()->getManager();
+        //$em->persist($updateEntity);
+        $em->flush();
+
+        $this->get('session')->getFlashBag()->add('success','Blog status updated successfully.');
+        return $this->redirect($this->generateUrl('admin_blog_home'));
+
+      }
+
     }
 
     /**
