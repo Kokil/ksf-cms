@@ -7,3 +7,5 @@ logs/*
 uploads/*
 cache/*
 web/uploads/*
+*~
+*.swp
