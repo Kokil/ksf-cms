@@ -124,6 +124,7 @@ class BlogController extends Controller {
 
             $this->get('session')->getFlashBag()->add('success', 'Blog Updated successfully.');
             return $this->redirect($this->generateUrl('admin_blog_home'));
+
         }
 
         return $this->render('AdminBlogBundle:Blog:blogEdit.html.twig', array('entity' => $entity, 'edit_form'=> $editForm->createView(),));

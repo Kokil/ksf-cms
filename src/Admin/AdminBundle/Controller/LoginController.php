@@ -39,4 +39,13 @@ class LoginController extends Controller {
      */
     public function logoutAction() {
     }
+    /**
+     * @Route("/admin/editProfile/", name="editProfile");
+     */
+    public function editProfileAction()
+    {
+        var_dump($this->get('security.context'));
+        echo 'edit profiel'; die();
+
+    }
 }
