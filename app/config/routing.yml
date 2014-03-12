@@ -36,7 +36,3 @@ login_check:
 dashboard:
     pattern: /admin/dashboard/
     defaults: {_controller: AdminDashboardBundle:Admin:index }
-
-_imagine:
-    resource: .
-    type:     imagine

@@ -105,74 +105,31 @@ class BlogController extends Controller {
     }
     /**
      *
-     * @Route("editBlog/{id}", name="blog_admin_edit")
-     * @Method("GET")
+     * @Route("editBlog/{id}/", name="blog_admin_edit")
      */
     public function editBlogAction(Request $request, $id) {
-        $em = $this->getDoctrine()->getManager();
+       $em = $this->getDoctrine()->getManager();
+
         $entity = $em->getRepository('AdminBlogBundle:Blog')->find($id);
 
         if (!$entity) {
-            return $this->render('AdminBlogBundle:Blog:Error.html.twig', array('error' => 'Blog Not Found! something went worng.',));
+            throw $this->createNotFoundException('Unable to find Blog entity.');
         }
+
         $editForm = $this->createEditForm($entity);
-        return $this->render('AdminBlogBundle:Blog:blogEdit.html.twig', array('entity' => $entity, 'edit_form' => $editForm->createView(),));
-    }
-    /**
-     *
-     * @Route("/updateBlog/", name="admin_blog_update")
-     * @Method({"POST","GET"})
-     */
+        $editForm->handleRequest($request);
 
-    public function updateAction(Request $request) {
-            /*
-            $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('AdminBlogBundle:Blog')->findOneByid($request->request->get('id'));
-            $entity = new blog();
-
-            $data = $request->request->all();
-            $category = (int)$data['admin_blogbundle_blog']['category'];
-            $updated = date('Y-m-d H:i:s');
-
-            $entity->setTitle($request->request->get('title'));
-            $entity->getCategory($category);
-            $entity->setAuthor($request->request->get('author'));
-            $entity->setSlug(preg_replace('/[^A-Za-z0-9-]+/', '-', $request->request->get('title')));
-            $entity->setShort($request->request->get('short'));
-            $entity->setDetail($request->request->get('detail'));
-            $entity->setStatus($request->request->get('status'));
-            $entity->setUpdated($updated);
-            //$em->persist($entity);
-            $hello = $em->flush();
-            var_dump($hello);
-            die();
-            $this->get('session')->getFlashBag()->add('success', 'Blog updated successfully.');
-
-            return $this->redirect($this->generateUrl('admin_blog_home'));
-             */
-                $id=(int)$request->request->get('id');
-                $em = $this->getDoctrine()->getManager();
-                $entity = $em->getRepository('AdminBlogBundle:Blog')->findOneByid($id);
-
-                $status = $entity->getStatus();
-            $newStatus = ($status ? 0 : 1);
-            $updated = date('Y-m-d H:i:s');
-            $new = $entity->setStatus($newStatus);
-            $updateEntity = new blog();
-
-            $updateEntity->setStatus($newStatus);
-            $updateEntity->setUpdated($updated);
+        if ($editForm->isValid()) {
             $em->flush();
 
+            $this->get('session')->getFlashBag()->add('success', 'Blog Updated successfully.');
+            return $this->redirect($this->generateUrl('admin_blog_home'));
+        }
 
-                $em->flush();
-                die('success');
-
-                $this->get('session')->getFlashBag()->add('success', 'Blog status updated successfully.');
-                return $this->redirect($this->generateUrl('admin_blog_home'));
-
+    return $this->render('AdminBlogBundle:Blog:blogEdit.html.twig', array('entity' => $entity, 'edit_form'=> $editForm->createView(),));
 
     }
+
     /**
      *
      * @Route("editDelete/{id}", name="blog_admin_delete")

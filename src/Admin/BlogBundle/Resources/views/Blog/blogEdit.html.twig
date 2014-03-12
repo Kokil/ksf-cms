@@ -93,82 +93,8 @@
 
 
                                 {{ form_errors(edit_form) }}
-                               <form id="edit-profile" name="edit_blog" class="form-horizontal" method="post" action="{{ path('admin_blog_update') }}"  enctype='multipart/form-data' {{ form_enctype(edit_form) }} {{ form_enctype(edit_form) }}>
-                                    <fieldset>
 
-                                        <div class="control-group">
-                                            <label class="control-label" for="username">Blog Title</label>
-                                            <div class="controls">
-                                                <input type="text" class="span6" id="title" name="title" required value="{{ entity.title }}">
-                                            </div> <!-- /controls -->
-                                        </div> <!-- /control-group -->
-
-
-
-                                        <div class="control-group">
-
-                                            <div class="controls">
-                                                {{ form_row(edit_form.category, { 'attr':{'class':'span6'} }) }}
-                                            </div>
-                                        </div>
-
-
-                                        <div class="control-group">
-                                            <label class="control-label" for="lastname">Author</label>
-                                            <div class="controls">
-                                                <input type="text" class="span6" id="author" name="author" value="{{ entity.author }}" required>
-                                            </div>
-                                        </div>
-
-                                        <!--<div class="control-group">
-
-                                            <label class="control-label" for="lastname">Image</label>
-
-                                            <img src="{{ asset('uploads/blog/img/logo.jpg') }}" />
-                                            <div class="controls">
-                                                <input type="file" class="span6" id="image" name="image" required>
-                                            </div>
-                                        </div>-->
-
-
-                                        <div class="control-group">
-                                            <label class="control-label" for="email">Short Detail</label>
-                                            <div class="controls">
-                                                <textarea name="short" class="span6" rows="4" required>{{ entity.short }}</textarea>
-                                            </div>
-                                        </div>
-
-
-                                        <br /><br />
-                                        <div class="control-group">
-                                            <label class="control-label" for="email">Detail</label>
-                                            <div class="controls">
-                                                <textarea name="detail" class="span6" rows="6" required>{{ entity.detail }}</textarea>
-                                            </div>
-                                        </div>
-                                        <div class="control-group">
-                                            <label class="control-label">Status</label>
-
-
-                                            <div class="controls">
-                                            <label class="radio inline">
-                                              <input type="radio"  name="status" value="1"
-                                              {% if entity.status == 1 %}checked {% endif %} >Publish
-                                            </label>
-
-                                            <label class="radio inline">
-                                              <input type="radio" name="status" value="0"  {% if entity.status == 0 %}checked {% endif %}>Save as Draft
-                                            </label>
-                                          </div>
-                                        </div>
-
-                                        <div class="form-actions">
-                                            <input type="hidden" name="id" value="{{ entity.id }}" >
-                                            <button type="submit"  name="submit" value="update_blog" class="btn btn-primary">Save</button>
-
-                                        </div>
-                                    </fieldset>
-                                </form>
+                                {{ form(edit_form) }}
                                     </fieldset>
                                 </form>
                             </div><!-- /widget-content -->
