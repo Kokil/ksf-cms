@@ -126,18 +126,27 @@ class BlogController extends Controller {
             return $this->redirect($this->generateUrl('admin_blog_home'));
         }
 
-    return $this->render('AdminBlogBundle:Blog:blogEdit.html.twig', array('entity' => $entity, 'edit_form'=> $editForm->createView(),));
-
+        return $this->render('AdminBlogBundle:Blog:blogEdit.html.twig', array('entity' => $entity, 'edit_form'=> $editForm->createView(),));
     }
 
     /**
-     *
      * @Route("editDelete/{id}", name="blog_admin_delete")
      * @Method("GET")
      */
     public function deleteBlogAction(Request $request, $id) {
-        echo 'delete blog of id: ' . $id;
-        die();
+        $em = $this->getDoctrine()->getManager();
+        $Blog = $em->getRepository('AdminBlogBundle:Blog')->findOneByid($id);
+
+        if (!$Blog) {
+             return $this->render('AdminBlogBundle:Blog:Error.html.twig', array('error' => 'Blog Not Found! something went worng.',));
+        }
+
+        $em = $this->getDoctrine()->getEntityManager();
+        $em->remove($Blog);
+        $em->flush();
+
+        $this->get('session')->getFlashBag()->add('success', 'Blog deleted successfully.');
+        return $this->redirect($this->generateUrl('admin_blog_home'));
     }
 
     private function createCreateForm(blog $entity) {
