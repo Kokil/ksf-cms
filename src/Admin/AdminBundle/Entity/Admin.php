@@ -27,6 +27,34 @@ class Admin implements AdvancedUserInterface, Serializable
     /**
      * @var string
      *
+     * @ORM\Column(name="firstname", type="string", length=255)
+     */
+    private $firstname;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="lastname", type="string", length=255)
+     */
+    private $lastname;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="address", type="string", length=255)
+     */
+    private $address;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="gender", type="string", length=10)
+     */
+    private $gender;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="username", type="string", length=255)
      */
     private $username;
@@ -49,6 +77,28 @@ class Admin implements AdvancedUserInterface, Serializable
      * @ORM\Column(type="string", length=255)
      */
     private $email;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="added", type="string", length=20)
+     */
+    private $added;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="updated", type="string", length=20)
+     */
+    private $updated;
+
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(type="boolean")
+     */
+    private $isActive = true;
 
 
     /**
@@ -154,12 +204,7 @@ class Admin implements AdvancedUserInterface, Serializable
     {
         // blank for now
     }
-    /**
-     * @var bool
-     *
-     * @ORM\Column(type="boolean")
-     */
-    private $isActive = true;
+
 
 
     /**
@@ -238,5 +283,143 @@ class Admin implements AdvancedUserInterface, Serializable
     public function getEmail()
     {
         return $this->email;
+    }
+
+    /**
+     * Set firstname
+     *
+     * @param string $firstname
+     * @return Admin
+     */
+    public function setFirstname($firstname)
+    {
+        $this->firstname = $firstname;
+
+        return $this;
+    }
+
+    /**
+     * Get firstname
+     *
+     * @return string
+     */
+    public function getFirstname()
+    {
+        return $this->firstname;
+    }
+
+    /**
+     * Set lastname
+     *
+     * @param string $lastname
+     * @return Admin
+     */
+    public function setLastname($lastname)
+    {
+        $this->lastname = $lastname;
+
+        return $this;
+    }
+
+    /**
+     * Get lastname
+     *
+     * @return string
+     */
+    public function getLastname()
+    {
+        return $this->lastname;
+    }
+
+    /**
+     * Set address
+     *
+     * @param string $address
+     * @return Admin
+     */
+    public function setAddress($address)
+    {
+        $this->address = $address;
+
+        return $this;
+    }
+
+    /**
+     * Get address
+     *
+     * @return string
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * Set gender
+     *
+     * @param string $gender
+     * @return Admin
+     */
+    public function setGender($gender)
+    {
+        $this->gender = $gender;
+
+        return $this;
+    }
+
+    /**
+     * Get gender
+     *
+     * @return string
+     */
+    public function getGender()
+    {
+        return $this->gender;
+    }
+
+    /**
+     * Set added
+     *
+     * @param string $added
+     * @return Admin
+     */
+    public function setAdded($added)
+    {
+        $this->added = $added;
+
+        return $this;
+    }
+
+    /**
+     * Get added
+     *
+     * @return string
+     */
+    public function getAdded()
+    {
+        return $this->added;
+    }
+
+    /**
+     * Set updated
+     *
+     * @param string $updated
+     * @return Admin
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+
+        return $this;
+    }
+
+    /**
+     * Get updated
+     *
+     * @return string
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
     }
 }
