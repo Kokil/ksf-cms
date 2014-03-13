@@ -1,7 +1,7 @@
 admin_blog_home:
     resource: "@AdminBlogBundle/Controller/"
     type:     annotation
-    prefix:   /admin/blog/
+    prefix:   /admin/
 
 admin_setting:
     resource: "@AdminSettingBundle/Controller/"
@@ -21,10 +21,6 @@ admin_admin:
     resource: "@AdminAdminBundle/Controller/"
     type:     annotation
     prefix:   /
-
-
-
-
 login:
     pattern:   /login/
     defaults:  { _controller: AdminAdminBundle:Login:login}

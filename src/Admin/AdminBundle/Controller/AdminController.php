@@ -34,7 +34,6 @@ class AdminController extends Controller {
      * @Route("/admin/editProfile/", name="editProfile");
      */
     public function editProfileAction(Request $request) {
-        //var_dump($_POST);
 
         $user = $this->get('security.context')->getToken()->getUser();
 
@@ -46,10 +45,16 @@ class AdminController extends Controller {
         $form = $this->createForm(new EditProfileType(), $entity, array('action' => $this->generateUrl('editProfile'), 'method' => 'POST',));
 
         if ($request->isMethod('POST')) {
+            var_dump($_POST);
 
-            $em->flush();
+            $status=$em->flush();
 
-           // return $this->redirect($this->generateUrl('profile'));
+            var_dump($status);
+            die();
+
+            $this->get('session')->getFlashBag()->add('success', 'Blog Updated successfully.');
+            return $this->redirect($this->generateUrl('editProfile'));
+
         }
 
         return $this->render('AdminAdminBundle:Admin:editprofile.html.twig', array('entity' => $user, 'edit_form' => $form->createView(),));

@@ -5,7 +5,7 @@
     <meta charset="utf-8">
 
    <meta charset="utf-8">
-        <title>Blog : {{ site_name }}</title>
+        <title>Edit Profile : {{ site_name }}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <link href="{{ asset('bundles/adminadmin/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
@@ -59,7 +59,7 @@
                     <ul class="mainnav">
                         <li><a href="{{ path('dashboard') }}"><i class="icon-dashboard"></i><span>Dashboard</span> </a> </li>
                         <li class="active"><a href="{{ path('admin_blog_home') }}"><i class="icon-list-alt"></i><span>Blog</span> </a> </li>
-                        <li><a href="#"><i class="icon-facetime-video"></i><span>App Tour</span> </a></li>
+                        <li><a href="{{ path('admin_blog_category_home') }}"><i class="icon-facetime-video"></i><span>Blog Category</span> </a></li>
                         <li><a href="#"><i class="icon-bar-chart"></i><span>Charts</span> </a> </li>
                         <li><a href="#"><i class="icon-code"></i><span>Shortcodes</span> </a> </li>
                         <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-long-arrow-down"></i><span>Drops</span> <b class="caret"></b></a>
@@ -86,7 +86,7 @@
                     <div class="span12">
                         <div class="widget">
                             <div class="widget-header">
-                                <h3>Edit Blog</h3>
+                                <h3>Edit Profile</h3>
                                 <a href="{{ path('admin_blog_home') }}" class="pull-right" style="padding-right:10px; font-weight:bold;font-size:15px;">Back</a>
                             </div><!-- /widget-header -->
 

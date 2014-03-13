@@ -14,7 +14,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class BlogController extends Controller {
     /**
-     * @Route("/", name="admin_blog_home")
+     * @Route("/blog/", name="admin_blog_home")
      * @Template()
      */
     public function indexAction() {
@@ -23,7 +23,7 @@ class BlogController extends Controller {
         return $this->render('AdminBlogBundle:Blog:index.html.twig', array('entities' => $entities,));
     }
     /**
-     * @Route("/new/", name="admin_blog_add")
+     * @Route("/blog/new/", name="admin_blog_add")
      * @Template()
      */
     public function addAction(Request $request) {
@@ -79,7 +79,7 @@ class BlogController extends Controller {
     }
     /**
      *
-     * @Route("statusUpdate/{id}", name="blog_status_update")
+     * @Route("/blog/statusUpdate/{id}", name="blog_status_update")
      * @Method("GET")
      */
     public function StatusUpdateAction(Request $request, $id) {
@@ -105,7 +105,7 @@ class BlogController extends Controller {
     }
     /**
      *
-     * @Route("editBlog/{id}/", name="blog_admin_edit")
+     * @Route("/blog/editBlog/{id}/", name="blog_admin_edit")
      */
     public function editBlogAction(Request $request, $id) {
        $em = $this->getDoctrine()->getManager();
@@ -131,7 +131,7 @@ class BlogController extends Controller {
     }
 
     /**
-     * @Route("editDelete/{id}", name="blog_admin_delete")
+     * @Route("/blog/editDelete/{id}", name="blog_admin_delete")
      * @Method("GET")
      */
     public function deleteBlogAction(Request $request, $id) {
