@@ -126,8 +126,8 @@
                                                 <td>{{ entity.added }}</td>
                                                 <td> {% if entity.status == '1' %}
 
-                                                 <a href="{{ path('blog_status_update',{'id':entity.id})}}">Unpublish</a>
-                                                 {% else %}<a href="{{ path('blog_status_update',{'id':entity.id})}}">Publish</a>
+                                                 <a href="{{ path('admin_blog_category_change_status',{'id':entity.id})}}">Unpublish</a>
+                                                 {% else %}<a href="{{ path('admin_blog_category_change_status',{'id':entity.id})}}">Publish</a>
                                                  {% endif %}
                                              </td>
                                              <td class="td-actions"><a href="{{ path('blog_admin_edit',{'id':entity.id}) }}">Edit</a>|<a href="{{ path('blog_admin_delete',{'id':entity.id })}}">Delete</a></td>

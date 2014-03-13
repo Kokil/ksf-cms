@@ -6,13 +6,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Security\Core\SecurityContext;
 use Symfony\Component\HttpFoundation\Request;
 use Admin\AdminBundle\Form\EditProfileType;
-
-
-
-
 use Symfony\Component\Form\FormView;
 use Symfony\Component\Form\FileField;
-
+use Admin\AdminBundle\Entity\Admin;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
@@ -45,11 +41,12 @@ class AdminController extends Controller {
         $form = $this->createForm(new EditProfileType(), $entity, array('action' => $this->generateUrl('editProfile'), 'method' => 'POST',));
 
         if ($request->isMethod('POST')) {
-            var_dump($_POST);
+            $updateEntity = new Admin;
 
-            $status=$em->flush();
+            $updateEntity->setFirstname('Kokil');
+            $em->flush();
+            var_dump($em->flush());
 
-            var_dump($status);
             die();
 
             $this->get('session')->getFlashBag()->add('success', 'Blog Updated successfully.');
