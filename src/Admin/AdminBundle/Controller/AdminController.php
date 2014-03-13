@@ -35,34 +35,22 @@ class AdminController extends Controller {
      */
     public function editProfileAction(Request $request) {
         //var_dump($_POST);
+
         $user = $this->get('security.context')->getToken()->getUser();
 
-        $form = $this->createForm(new EditProfileType(), $user, array('action' => $this->generateUrl('editProfile'), 'method' => 'POST',));
+        $em = $this->getDoctrine()->getManager();
+        $id=1;
+
+        $entity = $em->getRepository('AdminAdminBundle:Admin')->find($id);
+
+        $form = $this->createForm(new EditProfileType(), $entity, array('action' => $this->generateUrl('editProfile'), 'method' => 'POST',));
 
         if ($request->isMethod('POST')) {
-            var_dump($_POST);
-            /*$form->bind($request);
 
-            if ($form->isValid()) {
+            $em->flush();
 
-                // Save the user
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($user);
-                $em->flush();
-
-                // Redirect the user
-                $this->get('session')->setFlash('notice', 'Your profile has been updated');
-                return new RedirectResponse($this->generateUrl('my_profile'));
-            }
-            else {
-
-                // Reset to default values or else it will get saved to the session
-                $em = $this->getDoctrine()->getManager();
-                $em->refresh($user);
-                */
-            }
-
-
+           // return $this->redirect($this->generateUrl('profile'));
+        }
 
         return $this->render('AdminAdminBundle:Admin:editprofile.html.twig', array('entity' => $user, 'edit_form' => $form->createView(),));
     }
