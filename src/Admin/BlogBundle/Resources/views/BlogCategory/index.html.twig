@@ -93,7 +93,7 @@
                             <div class="widget widget-table action-table">
                                 <div class="widget-header"> <i class="icon-th-list"></i>
                                     <h3>Blog Category</h3>
-                                    <a href="{{ path('admin_blog_add') }}" class="pull-right" style="padding-right:10px; font-weight:bold;font-size:15px;">Add blog </a>
+                                    <a href="{{ path('admin_blog_category_add') }}" class="pull-right" style="padding-right:10px; font-weight:bold;font-size:15px;">Add blog Category </a>
                                 </div>
                                 <!-- /widget-header -->
                                 <br />
@@ -130,7 +130,7 @@
                                                  {% else %}<a href="{{ path('admin_blog_category_change_status',{'id':entity.id})}}">Publish</a>
                                                  {% endif %}
                                              </td>
-                                             <td class="td-actions"><a href="{{ path('blog_admin_edit',{'id':entity.id}) }}">Edit</a>|<a href="{{ path('blog_admin_delete',{'id':entity.id })}}">Delete</a></td>
+                                             <td class="td-actions"><a href="{{ path('admin_blog_category_edit',{'id':entity.id}) }}">Edit</a>|<a href="{{ path('admin_blog_category_delete',{'id':entity.id })}}">Delete</a></td>
                                          </tr>
 
                                          {% endfor %}

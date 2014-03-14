@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <meta charset="utf-8">
+    <title>Blog Category : {{ site_name }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link href="{{ asset('bundles/adminadmin/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('bundles/adminadmin/css/bootstrap-responsive.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('bundles/adminadmin/css/font-awesome.css') }}" rel="stylesheet">
+    <!--<link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet">-->
+    <link href="{{ asset('bundles/adminadmin/css/style.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('bundles/adminadmin/css/pages/dashboard.css') }}" rel="stylesheet">
+        <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <div class="navbar navbar-default navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container"> <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span
+                    class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span> </a><a class="brand" href="{{ path('dashboard') }}">{{ site_name }} : Admin Dashboard</a>
+                    <div class="nav-collapse">
+                        <ul class="nav pull-right">
+                            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
+                                class="icon-cog"></i> Account <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="javascript:;">Settings</a></li>
+                                    <li><a href="javascript:;">Help</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
+                                class="icon-user"></i> {{ app.user.username|capitalize }} <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Password</a></li>
+                                    <li><a href="{{ path('editProfile') }}">Profile</a></li>
+                                    <li><a href="{{ path('logout') }}">Logout</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <form class="navbar-search pull-right">
+                            <input type="text" class="search-query" placeholder="Search">
+                        </form>
+                    </div>
+                    <!--/.nav-collapse -->
+                </div>
+                <!-- /container -->
+            </div>
+            <!-- /navbar-inner -->
+        </div>
+        <!-- /navbar -->
+        <div class="subnavbar">
+            <div class="subnavbar-inner">
+                <div class="container">
+                    <ul class="mainnav">
+                        <li><a href="{{ path('dashboard') }}"><i class="icon-dashboard"></i><span>Dashboard</span> </a> </li>
+                        <li><a href="{{ path('admin_blog_home') }}"><i class="icon-list-alt"></i><span>Blog</span> </a> </li>
+                        <li  class="active"><a href="{{ path('admin_blog_category_home') }}"><i class="icon-facetime-video"></i><span>Blog Categeory</span> </a></li>
+                        <li><a href="#"><i class="icon-bar-chart"></i><span>Charts</span> </a> </li>
+                        <li><a href="#"><i class="icon-code"></i><span>Shortcodes</span> </a> </li>
+                        <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-long-arrow-down"></i><span>Drops</span> <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Icons</a></li>
+                                <li><a href="#">FAQ</a></li>
+                                <li><a href="#">Pricing Plans</a></li>
+                                <li><a href="#">Login</a></li>
+                                <li><a href="#">Signup</a></li>
+                                <li><a href="#">404</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /container -->
+            </div>
+            <!-- /subnavbar-inner -->
+        </div>
+        <!-- /subnavbar -->
+        <div class="main">
+            <div class="main-inner">
+                <div class="container">
+                    <div class="row">
+                        <div class="span12">
+                            <div class="widget">
+                                <div class="widget-header">
+                                    <h3>Add Blog Category</h3>
+                                    <a href="{{ path('admin_blog_category_home') }}" class="pull-right" style="padding-right:10px; font-weight:bold;font-size:15px;">Back</a>
+                                </div><!-- /widget-header -->
+
+                                <div class="widget-content">
+                                    {#{ form_errors(form) }#}
+                                    <form id="edit-profile" class="form-horizontal" method="post" action="{{ path('admin_blog_category_add') }}"  enctype='multipart/form-data'>
+                                        <fieldset>
+
+                                            <div class="control-group">
+                                                <label class="control-label" for="username">Category Name</label>
+                                                <div class="controls">
+                                                    <input type="text" class="span6" id="name" name="name" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="control-group">
+                                                <label class="control-label" for="username">Category Detail</label>
+                                                <div class="controls">
+                                                    <input type="text" class="span6" id="description‎" name="description‎" required>
+                                                </div>
+                                            </div>
+                                            <div class="control-group">
+                                                <label class="control-label">Status</label>
+                                                <div class="controls">
+                                                    <label class="radio inline">
+                                                      <input type="radio"  name="status" value="1" checked>Publish
+                                                  </label>
+
+                                                  <label class="radio inline">
+                                                      <input type="radio" name="status" value="0">Save as Draft
+                                                  </label>
+                                              </div>
+                                          </div>
+                                          <div class="form-actions">
+                                            <button type="submit" class="btn btn-primary">Add</button>
+
+                                        </div>
+                                    </fieldset>
+                                </form>
+                            </fieldset>
+                        </form>
+                    </div><!-- /widget-content -->
+                </div><!-- /widget -->
+            </div><!-- /span8 -->
+        </div><!-- /row -->
+    </div><!-- /container -->
+</div><!-- /main-inner -->
+</div><!-- /main -->
+
+
+
+<div class="footer">
+    <div class="footer-inner">
+        <div class="container">
+            <div class="row">
+                <div class="span12" style="text-align:center;"> &copy; {{ "now"|date("Y") }} <a href="http://www.kokil.com.np/">Kokil Thapa</a> || Powered by : <a href="http://symfony.com/">Symfony</a> </div>
+                <!-- /span12 -->
+            </div><!-- /row -->
+        </div><!-- /container -->
+    </div><!-- /footer-inner -->
+</div><!-- /footer -->
+<script src="{{ asset('bundles/adminadmin/js/jquery-1.7.2.min.js') }}"></script>
+<script src="{{ asset('bundles/adminadmin/js/excanvas.min.js') }}"></script>
+<script src="{{ asset('bundles/adminadmin/js/bootstrap.js') }}"></script>
+<script src="{{ asset('bundles/adminadmin/js/base.js') }}"></script>
+</body>
+</html>

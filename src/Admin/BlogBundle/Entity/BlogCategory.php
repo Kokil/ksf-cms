@@ -46,7 +46,7 @@ class BlogCategory {
     /**
      * @var string
      *
-     * @ORM\Column(name="updated", type="string", length=20)
+     * @ORM\Column(name="updated", type="string", length=20,nullable=true)
      */
     private $updated;
 
