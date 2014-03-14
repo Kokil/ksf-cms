@@ -90,6 +90,10 @@ class BlogCategoryController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('AdminBlogBundle:BlogCategory')->find($id);
 
+        if (!$entity) {
+            return $this->render('AdminBlogBundle:BlogCategory:Error.html.twig', array('error' => 'Blog Category Not Found! something went worng.',));
+        }
+
         if ($request->isMethod('POST')) {
 
             $entity->setName($request->request->get('name'));
@@ -98,22 +102,33 @@ class BlogCategoryController extends Controller {
             $entity->setUpdated(date('Y-m-d H:i:s'));
             $em->persist($entity);
             $em->flush();
+
+            $this->get('session')->getFlashBag()->add('success', 'Blog updated successfully.');
+            return $this->redirect($this->generateUrl('admin_blog_category_home'));
+
         }
 
 
-        if (!$entity) {
-            return $this->render('AdminBlogBundle:BlogCategory:Error.html.twig', array('error' => 'Blog Category Not Found! something went worng.',));
-        }
+
         return $this->render('AdminBlogBundle:BlogCategory:edit.html.twig', array('entity' => $entity));
     }
 
     /**
      * @Route("/blogCategory/delete/{id}",name="admin_blog_category_delete")
      */
-    public function blogCategoryDeleteAction()
+    public function blogCategoryDeleteAction(Request $request, $id)
     {
-        echo 'delete'; die();
+        $em = $this->getDoctrine()->getManager();
+        $BlogCategory = $em->getRepository('AdminBlogBundle:BlogCategory')->findOneByid($id);
 
+        if (!$BlogCategory) {
+             return $this->render('AdminBlogBundle:BlogCategory:Error.html.twig', array('error' => 'Blog Category Not Found! something went worng.',));
+        }
+        $em = $this->getDoctrine()->getEntityManager();
+        $em->remove($BlogCategory);
+        $em->flush();
+        $this->get('session')->getFlashBag()->add('success', 'Blog Category deleted successfully.');
+        return $this->redirect($this->generateUrl('admin_blog_category_home'));
     }
 
 
