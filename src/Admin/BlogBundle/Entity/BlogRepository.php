@@ -12,5 +12,9 @@ use Doctrine\ORM\EntityRepository;
  */
 class BlogRepository extends EntityRepository
 {
+	public function findAll()
+    {
+        return $this->findBy(array(), array('id' => 'DESC'));
+    }
 
 }

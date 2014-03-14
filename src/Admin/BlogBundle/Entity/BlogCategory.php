@@ -40,7 +40,7 @@ class BlogCategory {
     /**
      * @var string
      *
-     * @ORM\Column(name="added", type="string", length=20)
+     * @ORM\Column(name="added", type="string", length=20,nullable=true)
      */
     private $added;
     /**

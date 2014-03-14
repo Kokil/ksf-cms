@@ -45,7 +45,7 @@ class Blog {
     /**
      * @var string
      *
-     * @ORM\Column(name="image", type="string", length=255)
+     * @ORM\Column(name="image", type="string", length=255 ,nullable=true)
      */
     private $image;
     /**
@@ -63,13 +63,13 @@ class Blog {
     /**
      * @var string
      *
-     * @ORM\Column(name="added", type="string", length=20)
+     * @ORM\Column(name="added", type="string", length=20,nullable=true)
      */
     private $added;
     /**
      * @var string
      *
-     * @ORM\Column(name="updated", type="string", length=20)
+     * @ORM\Column(name="updated", type="string", length=20,nullable=true)
      */
     private $updated;
 
