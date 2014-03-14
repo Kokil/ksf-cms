@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Admin\SettingBundle\Entity\Blog" table="Blog">
+    <indexes>
+      <index name="IDX_6027FE7D64C19C1" columns="category"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="title" type="string" column="title" length="255" nullable="false"/>
+    <field name="author" type="string" column="author" length="255" nullable="false"/>
+    <field name="slug" type="string" column="slug" length="255" nullable="false"/>
+    <field name="short" type="text" column="short" nullable="false"/>
+    <field name="image" type="string" column="image" length="255" nullable="false"/>
+    <field name="detail" type="text" column="detail" nullable="false"/>
+    <field name="status" type="boolean" column="status" nullable="false"/>
+    <field name="added" type="string" column="added" length="20" nullable="false"/>
+    <field name="updated" type="string" column="updated" length="20" nullable="false"/>
+    <many-to-one field="category" target-entity="Blogcategory">
+      <join-columns>
+        <join-column name="category" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

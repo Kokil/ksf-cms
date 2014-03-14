@@ -25,7 +25,7 @@ class EditProfileType extends AbstractType
             $builder->add('gender','choice',array('choices'=> array('Male' =>'Male','Female'=>'Female'),'required'=> true,)
 
                 );
-            $builder->add('updated');
+            //$builder->add('updated');
             // Events Listner
             $builder->addEventListener(FormEvents::PRE_SET_DATA, function(FormEvent $event){
                 $profile = $event->getData();

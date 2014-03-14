@@ -32,24 +32,22 @@ class AdminController extends Controller {
     public function editProfileAction(Request $request) {
 
         $user = $this->get('security.context')->getToken()->getUser();
-
+        $id=$user->getId();
         $em = $this->getDoctrine()->getManager();
-        $id=1;
-
         $entity = $em->getRepository('AdminAdminBundle:Admin')->find($id);
-
         $form = $this->createForm(new EditProfileType(), $entity, array('action' => $this->generateUrl('editProfile'), 'method' => 'POST',));
 
         if ($request->isMethod('POST')) {
-            $updateEntity = new Admin;
 
-            $updateEntity->setFirstname('Kokil');
+            $entity->setFirstname($request->request->get('firstname'));
+            $entity->setLastname($request->request->get('lastname'));
+            $entity->setAddress($request->request->get('address'));
+            $entity->setGender($request->request->get('gender'));
+            $entity->setUpdated(date('Y-m-d H:i:s'));
+            $em->persist($entity);
             $em->flush();
-            var_dump($em->flush());
 
-            die();
-
-            $this->get('session')->getFlashBag()->add('success', 'Blog Updated successfully.');
+            $this->get('session')->getFlashBag()->add('success', 'Profile Updated successfully.');
             return $this->redirect($this->generateUrl('editProfile'));
 
         }

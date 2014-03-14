@@ -6,7 +6,7 @@ admin_blog_home:
 admin_setting:
     resource: "@AdminSettingBundle/Controller/"
     type:     annotation
-    prefix:   /
+    prefix:   /admin/setting/
 
 admin_pages:
     resource: "@AdminPagesBundle/Controller/"
