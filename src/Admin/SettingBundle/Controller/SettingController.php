@@ -14,6 +14,6 @@ class SettingController extends Controller
      */
     public function indexAction()
     {
-        die('koks working on setting');
+
     }
 }

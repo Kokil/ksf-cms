@@ -55,6 +55,32 @@ class AdminController extends Controller {
         return $this->render('AdminAdminBundle:Admin:editprofile.html.twig', array('entity' => $user, 'edit_form' => $form->createView(),));
     }
 
+    /**
+     * @Route("/admin/changePassword/", name="admin_change_password");
+     */
+
+    public function changePasswordAction(Request $request)
+    {
+        $user = $this->get('security.context')->getToken()->getUser();
+        $id=$user->getId();
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('AdminAdminBundle:Admin')->find($id);
+
+        $password=$user->getPassword();
+
+        if ($request->isMethod('POST')) {
+
+            /*
+            Update Password ....
+             */
+
+            var_dump($_POST);
+
+        }
+
+        return $this->render('AdminAdminBundle:Admin:changePassword.html.twig', array('entity' => $user));
+    }
+
     private function createEditForm(blog $entity) {
         $form = $this->createForm(new BlogType(), $entity, array('action' => $this->generateUrl('blog_admin_edit'), 'method' => 'PUT',));
 
