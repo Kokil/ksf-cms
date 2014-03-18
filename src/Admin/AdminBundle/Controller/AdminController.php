@@ -68,13 +68,59 @@ class AdminController extends Controller {
 
         $password=$user->getPassword();
 
+        $encoder = $this->container->get('security.encoder_factory')->getEncoder($user);
+        $oldpassword=$encoder->encodePassword('kokilthapa', $user->getSalt());
+
+        $oldpassword1=$encoder->encodePassword('sdfsdfsdfsdf', $user->getSalt());
+
+
+        var_dump($oldpassword);
+        var_dump($oldpassword1);
+        die();
+
+
         if ($request->isMethod('POST')) {
+
+            $userOldPassword=$request->request->get('oldpassword');
+            $userNewPassword=$request->request->get('newpassword');
+            $userNewConfirmPassword=$request->request->get('confirmpassword');
+            $encoder = $this->encoder->getEncoder($user);
+
+
+
+            /*$encoder = $this->container->get('security.encoder_factory')->getEncoder($user);
+            $UserinputoldEncryptedPassword=$user->getPassword($encoder->encodePassword($userOldPassword, $user->getSalt()));
+            */
+
+            $plainCurrentPassword = $request->request->get('oldpassword');
+
+
+                    $encoded = $encoder->encodePassword($plainCurrentPassword, $user->getSalt());
+                    echo $encoded;
+
+
+            if($password===$UserinputoldEncryptedPassword){
+
+                echo $userOldPassword;
+
+
+
+            }
+            else {
+
+                echo 'sdfasd';die();
+
+            $this->get('session')->getFlashBag()->add('error', 'Your old password is wrong !!!');
+            return $this->redirect($this->generateUrl('admin_change_password'));
+
+            }
+
+            die();
 
             /*
             Update Password ....
              */
 
-            var_dump($_POST);
 
         }
 
@@ -85,5 +131,12 @@ class AdminController extends Controller {
         $form = $this->createForm(new BlogType(), $entity, array('action' => $this->generateUrl('blog_admin_edit'), 'method' => 'PUT',));
 
         return $form;
+    }
+
+    private function encodePassword($user, $plainPassword)
+    {
+        $encoder = $this->container->get('security.encoder_factory')->getEncoder($user);
+
+        return $encoder->encodePassword($plainPassword, $user->getSalt());
     }
 }
