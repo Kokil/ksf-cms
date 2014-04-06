@@ -7,5 +7,5 @@ Features:
 =========
 
 
-1) Installing Steps :
-=====================
+Installing Steps :
+=================
